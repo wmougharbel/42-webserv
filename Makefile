@@ -2,7 +2,7 @@ NAME = webserv
 
 CPP = c++
 
-CPPFLAGS = -Wall -Wextra -Werror -g -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -g -pedantic -std=c++98
 
 RM = rm -rf
 
