@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Exception.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wmoughar <wmoughar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 14:01:37 by wmoughar          #+#    #+#             */
-/*   Updated: 2024/01/02 10:43:43 by wmoughar         ###   ########.fr       */
+/*   Created: 2024/01/02 10:29:34 by wmoughar          #+#    #+#             */
+/*   Updated: 2024/01/02 10:49:57 by wmoughar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
-#include "../includes/Exception.hpp"
+#ifndef EXCEPTION_HPP
+# define EXCEPTION_HPP
 
-int main(int argc, char **argv)
+# include <exception>
+
+class Exception : public std::exception
 {
-	try
-	{
-		if (argc != 2)
-			throw (Exception("Incorrect numbers of arguments!"));
-		std::cout << "Argument: " << argv[1] << std::endl;
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << "Exception caught: " << e.what() << std::endl;
-	}
-}
+	private:
+		const char	*_message;
+		Exception();
+
+	public:
+		Exception(const char *message);
+		Exception(const Exception &);
+		Exception	&operator=(const Exception &);
+		~Exception() throw();
+		const char	*what() const throw();
+};
+
+#endif

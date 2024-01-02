@@ -8,7 +8,10 @@ RM = rm -rf
 
 SRC_DIR = sources/
 
-SOURCES = $(addprefix $(SRC_DIR), main.cpp)
+SOURCES = $(addprefix $(SRC_DIR), main.cpp \
+								  $(EXCEPTION))
+
+EXCEPTION = $(addprefix exception/, Exception.cpp) 
 
 OBJECTS = $(addsuffix .o, $(basename $(SOURCES)))
 
