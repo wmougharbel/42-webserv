@@ -9,9 +9,13 @@ RM = rm -rf
 SRC_DIR = sources/
 
 SOURCES = $(addprefix $(SRC_DIR), main.cpp \
-								  $(EXCEPTION))
+								  $(EXCEPTION) \
+								  $(CONFIG))
 
 EXCEPTION = $(addprefix exception/, Exception.cpp) 
+
+CONFIG = $(addprefix configurationFile/, ConfigurationFile.cpp \
+										 confHelpers.cpp)
 
 OBJECTS = $(addsuffix .o, $(basename $(SOURCES)))
 

@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   confHelpers.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wmoughar <wmoughar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 14:01:37 by wmoughar          #+#    #+#             */
-/*   Updated: 2024/01/02 11:45:05 by wmoughar         ###   ########.fr       */
+/*   Created: 2024/01/02 11:56:25 by wmoughar          #+#    #+#             */
+/*   Updated: 2024/01/02 11:57:49 by wmoughar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
-#include "../includes/Exception.hpp"
-#include "../includes/ConfigurationFile.hpp"
+#include "../../includes/ConfigurationFile.hpp"
 
-int main(int argc, char **argv)
+bool	checkFileExctension(std::string fileName)
 {
-	try
-	{
-		if (argc != 2)
-			throw (Exception("Incorrect numbers of arguments!"));
-		ConfigurationFile	config(argv[1]);
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << "Exception caught: " << e.what() << std::endl;
-	}
+	size_t			len = fileName.length();
+
+	if (fileName[len - 5] == '.' && fileName[len - 4] == 'c' && fileName[len - 3] == 'o' \
+		&& fileName[len - 2] == 'n' && fileName[len - 1] == 'f')
+		return (true);
+	return (false);
 }
