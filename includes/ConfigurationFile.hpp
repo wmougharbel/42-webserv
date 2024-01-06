@@ -6,7 +6,7 @@
 /*   By: wmoughar <wmoughar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:20:29 by wmoughar          #+#    #+#             */
-/*   Updated: 2024/01/02 11:56:45 by wmoughar         ###   ########.fr       */
+/*   Updated: 2024/01/06 16:23:58 by wmoughar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <string>
 # include <iostream>
 # include <fstream>
-// # include <algorithm>
+# include <algorithm>
 
 class ConfigurationFile
 {
