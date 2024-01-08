@@ -6,7 +6,7 @@
 /*   By: wmoughar <wmoughar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:20:29 by wmoughar          #+#    #+#             */
-/*   Updated: 2024/01/06 16:23:58 by wmoughar         ###   ########.fr       */
+/*   Updated: 2024/01/08 13:32:32 by wmoughar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@
 # include <string>
 # include <iostream>
 # include <fstream>
+# include <map>
 # include <algorithm>
 
 class ConfigurationFile
 {
 	private:
-		std::string	_fileName;
+		std::string										_fileName;
+		std::map <std::string, std::string>				_configs;
+		std::map <std::string, std::string>::iterator	_it;
 		ConfigurationFile();
 
 	public:
@@ -32,6 +35,10 @@ class ConfigurationFile
 		~ConfigurationFile();
 
 		void	isFileValid();
+		void	storeInMap(std::string line);
+		void	parseFileInMap();
+
+		void	printMap();
 };
 
 bool	checkFileExctension(std::string fileName);
