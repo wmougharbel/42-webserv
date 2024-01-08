@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   webserv.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wmoughar <wmoughar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 14:01:37 by wmoughar          #+#    #+#             */
-/*   Updated: 2024/01/08 11:10:32 by wmoughar         ###   ########.fr       */
+/*   Created: 2024/01/06 16:53:36 by wmoughar          #+#    #+#             */
+/*   Updated: 2024/01/07 14:05:45 by wmoughar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
-#include "../includes/Exception.hpp"
-#include "../includes/ConfigurationFile.hpp"
+#ifndef WEBSERV_HPP
+# define WEBSERV_HPP
 
-int main(int argc, char **argv)
-{
-	try
-	{
-		if (argc != 2)
-			throw (Exception("Incorrect numbers of arguments!"));
-		ConfigurationFile	config(argv[1]);
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << "Exception caught: " << e.what() << std::endl;
-	}
-}
+# 
+
+#endif
