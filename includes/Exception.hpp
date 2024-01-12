@@ -6,7 +6,7 @@
 /*   By: wmoughar <wmoughar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 10:29:34 by wmoughar          #+#    #+#             */
-/*   Updated: 2024/01/02 10:49:57 by wmoughar         ###   ########.fr       */
+/*   Updated: 2024/01/12 11:35:29 by wmoughar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define EXCEPTION_HPP
 
 # include <exception>
+# include <iostream>
 
 class Exception : public std::exception
 {

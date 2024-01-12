@@ -6,7 +6,7 @@
 /*   By: wmoughar <wmoughar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:23:58 by wmoughar          #+#    #+#             */
-/*   Updated: 2024/01/08 13:41:33 by wmoughar         ###   ########.fr       */
+/*   Updated: 2024/01/12 11:46:16 by wmoughar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,13 @@ void	ConfigurationFile::isFileValid()
 
 void	ConfigurationFile::storeInMap(std::string line)
 {
-	size_t											pos;
+	size_t	pos;
+	size_t	semicolon;
 
 	pos = line.find(' ');
+	semicolon = line.find(';');
+	if (semicolon == std::string::npos)
+		throw (Exception("Missing semicolon in config file!"));
 	_it = _configs.find(line.substr(0, pos));
 	if (_it == _configs.end())
 		_configs[line.substr(0, pos)] = line.substr(pos, line.length());
