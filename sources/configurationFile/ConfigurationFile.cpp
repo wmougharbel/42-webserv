@@ -6,7 +6,7 @@
 /*   By: wmoughar <wmoughar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:23:58 by wmoughar          #+#    #+#             */
-/*   Updated: 2024/01/12 11:46:16 by wmoughar         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:01:53 by wmoughar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ ConfigurationFile::ConfigurationFile(){}
 
 ConfigurationFile::ConfigurationFile(std::string fileName): _fileName(fileName), _it(_configs.begin())
 {
+	this->_port = 0;
 	parseFileInMap();
+	initValues();
 }
 
 ConfigurationFile::ConfigurationFile(const ConfigurationFile &copy): _fileName(copy._fileName){}
@@ -50,15 +52,16 @@ void	ConfigurationFile::storeInMap(std::string line)
 	size_t	pos;
 	size_t	semicolon;
 
-	pos = line.find(' ');
 	semicolon = line.find(';');
+	line = trimSpaces(line);
+	pos = line.find(' ');
 	if (semicolon == std::string::npos)
 		throw (Exception("Missing semicolon in config file!"));
 	_it = _configs.find(line.substr(0, pos));
 	if (_it == _configs.end())
-		_configs[line.substr(0, pos)] = line.substr(pos, line.length());
+		_configs[line.substr(0, pos)] = line.substr(pos, semicolon);
 	else
-		_it->second = line.substr(pos, line.length());
+		_it->second = line.substr(pos, semicolon);
 }
 
 void	ConfigurationFile::printMap()
@@ -74,7 +77,8 @@ void	ConfigurationFile::parseFileInMap()
 
 	isFileValid();
 	input.open(_fileName.c_str());
-	getline(input, line);
+	while (line[0] != '{')
+		getline(input, line);
 	while (1)
 	{
 		if (line.find(' ') != std::string::npos)
@@ -84,4 +88,20 @@ void	ConfigurationFile::parseFileInMap()
 		std::cout << "Line: " << line << std::endl;	
 	}
 	printMap();
+}
+
+void	ConfigurationFile::initValues()
+{
+	_it = _configs.find("listen");
+	
+	if (_it == _configs.end())
+		throw(Exception("Invalid Port!"));
+	this->_port = std::atoi(_it->second.c_str());
+
+	_it = _configs.find("root");
+	if (_it == _configs.end())
+		throw(Exception("Invalid Root!"));
+	this->_root = _it->second;
+	std::cout << "Root: " << this->_root << std::endl;
+	std::cout << "Port: " << this->_port << std::endl;
 }

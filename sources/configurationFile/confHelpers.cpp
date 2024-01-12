@@ -6,7 +6,7 @@
 /*   By: wmoughar <wmoughar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:56:25 by wmoughar          #+#    #+#             */
-/*   Updated: 2024/01/06 16:24:42 by wmoughar         ###   ########.fr       */
+/*   Updated: 2024/01/12 12:32:38 by wmoughar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,19 @@ bool	checkFileExctension(std::string fileName)
 		&& fileName[len - 2] == 'n' && fileName[len - 1] == 'f')
 		return (true);
 	return (false);
+}
+
+std::string	trimSpaces(std::string line)
+{
+	size_t	i = 0;
+	size_t	len = line.length();
+	size_t	j = len - 1;
+	
+	while (i < len && isspace(line[i]))
+		i++;
+	while (j > i && isspace(line[j]))
+		j--;
+	if (line[j] == ';')
+		j--;
+	return (line.substr(i, j - i + 1));
 }
