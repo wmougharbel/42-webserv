@@ -6,7 +6,7 @@
 /*   By: wmoughar <wmoughar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:20:29 by wmoughar          #+#    #+#             */
-/*   Updated: 2024/01/12 13:59:52 by wmoughar         ###   ########.fr       */
+/*   Updated: 2024/01/13 19:19:36 by wmoughar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,22 @@
 # include <iostream>
 # include <fstream>
 # include <map>
+# include <vector>
 # include <algorithm>
 
 class ConfigurationFile
 {
 	private:
-		std::string												_fileName;
+		std::string									_fileName;
 		std::map <std::string, std::string>			_configs;
 		std::map <std::string, std::string>::iterator	_it;
 
+		std::vector<std::map <std::string, std::string> > _filenam;
+
 		size_t		_port;
 		std::string	_root;
+		std::string	_serverName;
+		std::string	_index;
 
 		ConfigurationFile();
 

@@ -6,7 +6,7 @@
 /*   By: wmoughar <wmoughar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:23:58 by wmoughar          #+#    #+#             */
-/*   Updated: 2024/01/12 14:01:53 by wmoughar         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:45:52 by wmoughar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void	ConfigurationFile::storeInMap(std::string line)
 		throw (Exception("Missing semicolon in config file!"));
 	_it = _configs.find(line.substr(0, pos));
 	if (_it == _configs.end())
-		_configs[line.substr(0, pos)] = line.substr(pos, semicolon);
+		_configs[line.substr(0, pos)] = line.substr(pos + 1, semicolon);
 	else
-		_it->second = line.substr(pos, semicolon);
+		_it->second = line.substr(pos + 1, semicolon);
 }
 
 void	ConfigurationFile::printMap()
@@ -102,6 +102,19 @@ void	ConfigurationFile::initValues()
 	if (_it == _configs.end())
 		throw(Exception("Invalid Root!"));
 	this->_root = _it->second;
-	std::cout << "Root: " << this->_root << std::endl;
+
+	_it = _configs.find("server_name");
+	if (_it == _configs.end())
+		throw(Exception("Invalid Server Name!"));
+	this->_serverName = _it->second;
+
+	_it = _configs.find("index");
+	if (_it == _configs.end())
+		throw(Exception("Invalid Index File!"));
+	this->_index = _it->second;
+	
+	std::cout << "Root: "<< this->_root << std::endl;
 	std::cout << "Port: " << this->_port << std::endl;
+	std::cout << "Server Name: " << this->_serverName << std::endl;
+	std::cout << "Index: " << this->_index << std::endl;
 }
