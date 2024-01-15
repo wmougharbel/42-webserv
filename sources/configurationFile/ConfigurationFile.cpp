@@ -6,7 +6,7 @@
 /*   By: wmoughar <wmoughar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:23:58 by wmoughar          #+#    #+#             */
-/*   Updated: 2024/01/12 14:45:52 by wmoughar         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:01:50 by wmoughar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 ConfigurationFile::ConfigurationFile(){}
 
-ConfigurationFile::ConfigurationFile(std::string fileName): _fileName(fileName), _it(_configs.begin())
+ConfigurationFile::ConfigurationFile(std::string fileName): _fileName(fileName), _it(_server.begin())
 {
-	this->_port = 0;
+	// this->_port = 0;
 	parseFileInMap();
-	initValues();
+	// initValues();
 }
 
 ConfigurationFile::ConfigurationFile(const ConfigurationFile &copy): _fileName(copy._fileName){}
@@ -57,16 +57,16 @@ void	ConfigurationFile::storeInMap(std::string line)
 	pos = line.find(' ');
 	if (semicolon == std::string::npos)
 		throw (Exception("Missing semicolon in config file!"));
-	_it = _configs.find(line.substr(0, pos));
-	if (_it == _configs.end())
-		_configs[line.substr(0, pos)] = line.substr(pos + 1, semicolon);
+	_it = _server.find(line.substr(0, pos));
+	if (_it == _server.end())
+		_server[line.substr(0, pos)] = line.substr(pos + 1, semicolon);
 	else
 		_it->second = line.substr(pos + 1, semicolon);
 }
 
 void	ConfigurationFile::printMap()
 {
-	for (std::map<std::string, std::string>::iterator	it = _configs.begin(); it != _configs.end(); it++)
+	for (std::map<std::string, std::string>::iterator	it = _server.begin(); it != _server.end(); it++)
 		std::cout << "Key: " << it->first << "\tValue: " << it->second << std::endl;
 }
 
@@ -87,34 +87,36 @@ void	ConfigurationFile::parseFileInMap()
 			break;
 		std::cout << "Line: " << line << std::endl;	
 	}
+	getline(input, line);
+	std::cout << "Bob: " << line << std::endl;
 	printMap();
 }
 
-void	ConfigurationFile::initValues()
-{
-	_it = _configs.find("listen");
+// void	ConfigurationFile::initValues()
+// {
+// 	_it = _server.find("listen");
 	
-	if (_it == _configs.end())
-		throw(Exception("Invalid Port!"));
-	this->_port = std::atoi(_it->second.c_str());
+// 	if (_it == _server.end())
+// 		throw(Exception("Invalid Port!"));
+// 	this->_port = std::atoi(_it->second.c_str());
 
-	_it = _configs.find("root");
-	if (_it == _configs.end())
-		throw(Exception("Invalid Root!"));
-	this->_root = _it->second;
+// 	_it = _server.find("root");
+// 	if (_it == _server.end())
+// 		throw(Exception("Invalid Root!"));
+// 	this->_root = _it->second;
 
-	_it = _configs.find("server_name");
-	if (_it == _configs.end())
-		throw(Exception("Invalid Server Name!"));
-	this->_serverName = _it->second;
+// 	_it = _server.find("server_name");
+// 	if (_it == _server.end())
+// 		throw(Exception("Invalid Server Name!"));
+// 	this->_serverName = _it->second;
 
-	_it = _configs.find("index");
-	if (_it == _configs.end())
-		throw(Exception("Invalid Index File!"));
-	this->_index = _it->second;
+// 	_it = _server.find("index");
+// 	if (_it == _server.end())
+// 		throw(Exception("Invalid Index File!"));
+// 	this->_index = _it->second;
 	
-	std::cout << "Root: "<< this->_root << std::endl;
-	std::cout << "Port: " << this->_port << std::endl;
-	std::cout << "Server Name: " << this->_serverName << std::endl;
-	std::cout << "Index: " << this->_index << std::endl;
-}
+// 	std::cout << "Root: "<< this->_root << std::endl;
+// 	std::cout << "Port: " << this->_port << std::endl;
+// 	std::cout << "Server Name: " << this->_serverName << std::endl;
+// 	std::cout << "Index: " << this->_index << std::endl;
+// }

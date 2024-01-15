@@ -6,7 +6,7 @@
 /*   By: wmoughar <wmoughar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:20:29 by wmoughar          #+#    #+#             */
-/*   Updated: 2024/01/13 19:19:36 by wmoughar         ###   ########.fr       */
+/*   Updated: 2024/01/15 11:33:34 by wmoughar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,10 @@
 
 class ConfigurationFile
 {
-	private:
+	protected:
 		std::string									_fileName;
-		std::map <std::string, std::string>			_configs;
+		std::map <std::string, std::string>			_server;
 		std::map <std::string, std::string>::iterator	_it;
-
-		std::vector<std::map <std::string, std::string> > _filenam;
-
-		size_t		_port;
-		std::string	_root;
-		std::string	_serverName;
-		std::string	_index;
 
 		ConfigurationFile();
 
@@ -41,12 +34,12 @@ class ConfigurationFile
 		ConfigurationFile(std::string fileName);
 		ConfigurationFile(const ConfigurationFile &);
 		ConfigurationFile	&operator=(const ConfigurationFile &);
-		~ConfigurationFile();
+		virtual	~ConfigurationFile();
 
 		void	isFileValid();
 		void	storeInMap(std::string line);
 		void	parseFileInMap();
-		void	initValues();
+		// void	initValues();
 
 		void	printMap();
 };
