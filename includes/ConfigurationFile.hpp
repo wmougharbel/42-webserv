@@ -39,7 +39,6 @@ class ConfigurationFile
 		void	isFileValid();
 		void	storeInMap(std::string line);
 		void	parseFileInMap();
-		// void	initValues();
 
 		void	printMap();
 };

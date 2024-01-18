@@ -36,6 +36,7 @@ class Server : public ConfigurationFile
 		Server(const Server &);
 		Server	&operator=(const Server &);
 		~Server();
+		void	initValues();
 };
 
 #endif

@@ -15,7 +15,8 @@ SOURCES = $(addprefix $(SRC_DIR), main.cpp \
 EXCEPTION = $(addprefix exception/, Exception.cpp) 
 
 CONFIG = $(addprefix configurationFile/, ConfigurationFile.cpp \
-										 confHelpers.cpp)
+										 confHelpers.cpp \
+										 Server.cpp)
 
 OBJECTS = $(addsuffix .o, $(basename $(SOURCES)))
 
