@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   confHelpers.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmoughar <wmoughar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wmoughar <wmoughar@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:56:25 by wmoughar          #+#    #+#             */
-/*   Updated: 2024/01/12 12:32:38 by wmoughar         ###   ########.fr       */
+/*   Updated: 2024/02/05 21:43:00 by wmoughar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,21 @@ std::string	trimSpaces(std::string line)
 	if (line[j] == ';')
 		j--;
 	return (line.substr(i, j - i + 1));
+}
+
+int	countServersInFile(std::ifstream input, std::string fileName)
+{
+	std::string	line;
+	int			serverCount;
+
+	serverCount = 0;
+	input.open(fileName.c_str());
+	do
+	{
+		if (line == "server")
+			serverCount++;
+	}
+	while (getline(input, line));
+	std::cout << "Number of servers in file: " << serverCount << std::endl;
+	return (serverCount);
 }

@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ConfigurationFile.cpp                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmoughar <wmoughar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wmoughar <wmoughar@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:23:58 by wmoughar          #+#    #+#             */
-/*   Updated: 2024/01/15 12:01:50 by wmoughar         ###   ########.fr       */
+/*   Updated: 2024/02/05 21:46:09 by wmoughar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ConfigurationFile.hpp"
 
-ConfigurationFile::ConfigurationFile(){}
+ConfigurationFile::ConfigurationFile()
+{
+}
 
 ConfigurationFile::ConfigurationFile(std::string fileName): _fileName(fileName), _it(_server.begin())
 {
@@ -90,6 +92,7 @@ void	ConfigurationFile::parseFileInMap()
 	getline(input, line);
 	std::cout << "Bob: " << line << std::endl;
 	printMap();
+	countServersInFile(input, _fileName);
 }
 
 // void	ConfigurationFile::initValues()

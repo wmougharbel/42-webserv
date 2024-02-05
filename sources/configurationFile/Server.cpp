@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Server.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmoughar <wmoughar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wmoughar <wmoughar@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 11:28:36 by wmoughar          #+#    #+#             */
-/*   Updated: 2024/01/15 11:34:52 by wmoughar         ###   ########.fr       */
+/*   Updated: 2024/02/05 21:41:04 by wmoughar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 Server::Server()
 {
-	initValues();
 }
 
 Server::Server(const Server &copy)
@@ -30,11 +29,11 @@ Server	&Server::operator=(const Server &object)
 {
 	if (this != &object)
 	{
-		this->_port = object._port;
-		this->_serverName = object._serverName;
-		this->_host = object._host;
-		this->_root = object._root;
-		this->_index = object._index;
+		_port = object._port;
+		_serverName = object._serverName;
+		_host = object._host;
+		_root = object._root;
+		_index = object._index;
 	}
 	return (*this);
 }
@@ -42,31 +41,3 @@ Server	&Server::operator=(const Server &object)
 Server::~Server(){}
 
 
-void	Server::initValues()
-{
-	_it = _server.find("listen");
-	
-	if (_it == _server.end())
-		throw(Exception("Invalid Port!"));
-	this->_port = std::atoi(_it->second.c_str());
-
-	_it = _server.find("root");
-	if (_it == _server.end())
-		throw(Exception("Invalid Root!"));
-	this->_root = _it->second;
-
-	_it = _server.find("server_name");
-	if (_it == _server.end())
-		throw(Exception("Invalid Server Name!"));
-	this->_serverName = _it->second;
-
-	_it = _server.find("index");
-	if (_it == _server.end())
-		throw(Exception("Invalid Index File!"));
-	this->_index = _it->second;
-	
-	std::cout << "Root: "<< this->_root << std::endl;
-	std::cout << "Port: " << this->_port << std::endl;
-	std::cout << "Server Name: " << this->_serverName << std::endl;
-	std::cout << "Index: " << this->_index << std::endl;
-}
