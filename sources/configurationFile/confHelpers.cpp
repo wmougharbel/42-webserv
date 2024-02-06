@@ -36,20 +36,3 @@ std::string	trimSpaces(std::string line)
 		j--;
 	return (line.substr(i, j - i + 1));
 }
-
-int	countServersInFile(std::ifstream input, std::string fileName)
-{
-	std::string	line;
-	int			serverCount;
-
-	serverCount = 0;
-	input.open(fileName.c_str());
-	do
-	{
-		if (line == "server")
-			serverCount++;
-	}
-	while (getline(input, line));
-	std::cout << "Number of servers in file: " << serverCount << std::endl;
-	return (serverCount);
-}

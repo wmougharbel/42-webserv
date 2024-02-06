@@ -90,9 +90,27 @@ void	ConfigurationFile::parseFileInMap()
 		std::cout << "Line: " << line << std::endl;	
 	}
 	getline(input, line);
-	std::cout << "Bob: " << line << std::endl;
 	printMap();
-	countServersInFile(input, _fileName);
+	countServersInFile();
+}
+
+int	ConfigurationFile::countServersInFile()
+{
+	std::string		line;
+	std::ifstream	input;
+	int				serverCount;
+
+	serverCount = 0;
+	input.open(_fileName.c_str());
+	do
+	{
+		if (line == "server")
+			serverCount++;
+	}
+	while (getline(input, line));
+	input.close();
+	std::cout << "Number of servers in file: " << serverCount << std::endl;
+	return (serverCount);
 }
 
 // void	ConfigurationFile::initValues()

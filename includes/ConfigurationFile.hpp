@@ -42,6 +42,7 @@ class ConfigurationFile
 		void	isFileValid();
 		void	storeInMap(std::string line);
 		void	parseFileInMap();
+		int		countServersInFile();
 		// void	initValues();
 
 		void	printMap();
@@ -49,7 +50,6 @@ class ConfigurationFile
 
 bool		checkFileExctension(std::string fileName);
 std::string	trimSpaces(std::string line);
-int			countServersInFile(std::ifstream input, std::string fileName)
 
 
 
