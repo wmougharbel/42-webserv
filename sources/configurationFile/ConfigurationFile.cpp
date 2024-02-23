@@ -109,9 +109,11 @@ int	ConfigurationFile::countServersInFile()
 	}
 	while (getline(input, line));
 	input.close();
+
 	std::cout << "Number of servers in file: " << serverCount << std::endl;
 	return (serverCount);
 }
+
 
 // void	ConfigurationFile::initValues()
 // {
