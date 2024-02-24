@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ConfigurationFile.hpp                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmoughar <wmoughar@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:20:29 by wmoughar          #+#    #+#             */
-/*   Updated: 2024/02/05 21:45:47 by wmoughar         ###   ########.fr       */
+/*   Updated: 2024/02/24 15:14:54 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ class ConfigurationFile
 		void	storeInMap(std::string line);
 		void	parseFileInMap();
 		int		countServersInFile();
+		void	extractDataFromServers();
 		// void	initValues();
 
 		void	printMap();

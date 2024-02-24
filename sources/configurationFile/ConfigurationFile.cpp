@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ConfigurationFile.cpp                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wmoughar <wmoughar@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 11:23:58 by wmoughar          #+#    #+#             */
-/*   Updated: 2024/02/05 21:46:09 by wmoughar         ###   ########.fr       */
+/*   Updated: 2024/02/24 15:21:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,24 @@ int	ConfigurationFile::countServersInFile()
 	return (serverCount);
 }
 
+void	ConfigurationFile::extractDataFromServers()
+{
+	std::ifstream	input;
+	std::string		line;
+
+	input.open(_fileName.c_str());
+	while (1)
+	{
+		getline(input, line);
+		if (line == "server" || line == "server{")
+		{
+			while (line != "}")
+			{
+				
+			}
+		}
+	}
+}
 
 // void	ConfigurationFile::initValues()
 // {
